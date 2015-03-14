@@ -1,0 +1,19 @@
+title: "Twitter Joints and Other Project Goodness"
+author: "Bradley Momberger"
+description: "An infodump about stuff I've been working on in my spare time."
+#subheading: "Really cool blog about ... something"
+more: "See full post"
+url: "http://airhadoken.github.io"
+#baseurl: "/contrast" # comment out if in root directory
+
+
+defaults:
+  -
+    scope:
+      path: "" # an empty string here means all files in the project
+    values:
+      layout: "default"
+
+
+kramdown:
+  input: GFM
