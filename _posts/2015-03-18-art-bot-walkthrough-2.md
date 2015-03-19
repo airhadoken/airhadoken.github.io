@@ -237,13 +237,14 @@ fills.forEach(function(xfills, i) {
 
 But we have a problem now.  Here's a table showing the 2d "fills" from a run of the script, transposed so that x-fills read across and y-fills read down.
 
----------------|------------------|------------------|----|
-rgb(255, 0, 0)|rgb(255, 255, 0)|rgb(255, 255, 255)|rgb(255, 255, 255)|
-rgb(0, 0, 255)|rgb(255, 255, 255)|rgb(255, 255, 255)|left|
-rgb(0, 0, 255)|rgb(255, 255, 255)|**rgb(255, 255, 255)**|rgb(255, 255, 255)|
-rgb(255, 255, 255)|left|top|left|
-rgb(255, 255, 255)|left|top|top|
-rgb(255, 0, 0)|rgb(255, 255, 255)|top|rgb(255, 255, 255)|
+|||||
+---|---|---|---
+rgb(255, 0, 0)|rgb(255, 255, 0)|rgb(255, 255, 255)|rgb(255, 255, 255)
+rgb(0, 0, 255)|rgb(255, 255, 255)|rgb(255, 255, 255)|left
+rgb(0, 0, 255)|rgb(255, 255, 255)|**rgb(255, 255, 255)**|rgb(255, 255, 255)
+rgb(255, 255, 255)|left|top|left
+rgb(255, 255, 255)|left|top|top
+rgb(255, 0, 0)|rgb(255, 255, 255)|top|rgb(255, 255, 255)
 
 In the bottom right corner, a "top" in the bottom row and a "left" in the last column both wind up to the bolded cell at (2, 2), creating overlapping white rectangles.  The output is predictably non-rectangular.
 
