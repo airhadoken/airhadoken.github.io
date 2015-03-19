@@ -13,6 +13,7 @@ Last time we went through the process of prototyping an approximation of random 
 Now we have an issue to work through, in that a real Mondrian isn't perfectly divided along the vertical lines. Let's try to account for that.  One possibility is to forgo the line drawing, and instead focus exclusively on drawing the rectangles.
 
 <!--more-->
+
 # 1: Reimagining the paint process
 
 First we'll define a grid by making yparts the same as xparts.
@@ -136,7 +137,7 @@ This indicates that we need to tweak the randomizer somewhat so that it looks a 
 
 # 3: Failed improvements
 
-A detour right now for things which didn't really work as expected.
+The rest of this post, as indicated by the title, is reserved for things which didn't really work as expected.
 
 ## 3.1: More randomizer
 
@@ -146,7 +147,7 @@ var count = Math.floor(
 ) + 4;
 ```
 
-for the number of backtracking or colored fills makes for not much more interesting things.  The count could be as little as 4 if the randomizer comes out small.  A normal or poisson distribution with sqrt(xparts.length * yparts.length) * C + C as the mean would likely be better in this case.
+for the number of backtracking or colored fills makes for not much more interesting things.  The count could be as little as 4 if the randomizer comes out small.  A normal or poisson distribution with `sqrt(xparts.length * yparts.length) * C + C` for arbitrary constants C as the mean would likely be better in this case.
 
 ## 3.2: Backtracking over rows and columns
 
