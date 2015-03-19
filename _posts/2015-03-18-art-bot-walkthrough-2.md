@@ -1,5 +1,5 @@
 ---
-title: "Art Bot Walkthrough 2: The Refinement"
+title: "Art Bot Walkthrough 2: Failures at Refinement"
 author: "Bradley Momberger"
 ---
 
