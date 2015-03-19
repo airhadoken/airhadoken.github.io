@@ -209,27 +209,26 @@ fills.forEach(function(xfills, i) {
     var xoff = asum(xparts.slice(0, i)), 
         yoff = asum(yparts.slice(0, j)), 
         w = xparts[i], 
-        h = yparts[j];
+        h = yparts[j], ref_i = i, ref_j = j;
 
     while(xyfill === "left" || xyfill === "top") {
       if(xyfill === "left") {
-        xyfill = fills[i -= 1][j];
-        xoff -= xparts[i];
-        w += xparts[i];
+        xyfill = fills[ref_i -= 1][ref_j];
+        xoff -= xparts[ref_i];
+        w += xparts[ref_i];
       }
       if(xyfill === "top") {
-        xyfill = fills[i][j -= 1];
-        yoff -= yparts[j];
-        h += yparts[j];
+        xyfill = fills[ref_i][ref_j -= 1];
+        yoff -= yparts[ref_j];
+        h += yparts[ref_j];
       }
     }
     context.fillStyle = xyfill;    
 
-    xoff += (i ? 7 : 0);
-    yoff += (j ? 7 : 0);
-    w -= (i ? 7 : 0);
-    h -= (j ? 7 : 0);
-    console.log("filling", xoff, yoff, w, h);
+    xoff += (ref_i ? 7 : 0);
+    yoff += (ref_j ? 7 : 0);
+    w -= (ref_i ? 7 : 0);
+    h -= (ref_j ? 7 : 0);
 
     context.fillRect(xoff, yoff, w, h);
   });
