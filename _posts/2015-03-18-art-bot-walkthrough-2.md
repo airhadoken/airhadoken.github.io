@@ -1,6 +1,7 @@
 ---
 title: "Art Bot Walkthrough 2: Failures at Refinement"
 author: "Bradley Momberger"
+excerpt_separator: <!--more-->
 ---
 
 # 0: the refresher
@@ -11,6 +12,7 @@ Last time we went through the process of prototyping an approximation of random 
 
 Now we have an issue to work through, in that a real Mondrian isn't perfectly divided along the vertical lines. Let's try to account for that.  One possibility is to forgo the line drawing, and instead focus exclusively on drawing the rectangles.
 
+<!--more-->
 # 1: Reimagining the paint process
 
 First we'll define a grid by making yparts the same as xparts.
@@ -128,7 +130,7 @@ The major bit here is that we've now stopped using the offsets as the determinan
 
 But we also get sample output looking like this.
 
-![full grid, only one blue square](/images/randrian.2015-03-16T22:46:28.142Z.png
+![full grid, only one blue square](/images/randrian.2015-03-16T22:46:28.142Z.png)
 
 This indicates that we need to tweak the randomizer somewhat so that it looks a little bit less mechanical.
 
