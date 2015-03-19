@@ -86,13 +86,20 @@ var fillcolors = ["rgb(255, 255, 0)", "rgb(255, 0, 0)", "rgb(0, 0, 255)"];
 To this we can add, say "left" and "top", which we'll use when drawing fills to just continue the fill from the left or from above, except when we're already at the left or top margin.
 
 ```javascript
-var fillcolors = ["rgb(255, 255, 0)", "rgb(255, 0, 0)", "rgb(0, 0, 255)", "left", "top"];
+var fillcolors = [
+  "rgb(255, 255, 0)", "rgb(255, 0, 0)", "rgb(0, 0, 255)", 
+  "left", "left", "left", "top", "top", "top"];
 var xp, yp, fill;
 while(count--) {
 
   xp = Math.floor(Math.random() * xparts.length);
   yp = Math.floor(Math.random() * yparts.length);
-  fill = fillcolors[Math.floor(Math.random() * (xp * yp === 0 ? 3 : fillcolors.length))];
+  fill = fillcolors[
+           Math.floor(
+             Math.random() 
+              * (xp * yp === 0 ? 3 : fillcolors.length)
+            )
+         ];
 
   fills[xp][yp] = fill;
 }
@@ -188,7 +195,7 @@ fills.forEach(function(xfills, i) {
 
 This has an unexpected side effect, though.
 
-![showing incomplete blocks](/images/randrian.2015-03-16T23/23/09.415Z.png)
+![showing incomplete blocks](/images/randrian.2015-03-16T23:23:09.415Z.png)
 
 Still, it's important to the final product that we are able to split up the lines with blocks spanning multiple columns.  Another strategy is required here.
 
