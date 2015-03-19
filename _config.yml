@@ -19,6 +19,8 @@ defaults:
     values:
       comments: true
 
+# markdown: kramdown
+markdown: redcarpet
 
 kramdown:
   input: GFM
