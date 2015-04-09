@@ -1,7 +1,8 @@
 ---
 title: "Art Bot Walkthrough 2: Failures at Refinement"
 author: "Bradley Momberger"
-excerpt_separator: <!--more-->
+excerpt: "Last time we went through the process of prototyping an approximation of random Mondrian paintings. 
+Now we have an issue to work through, in that a real Mondrian isn't perfectly divided along the vertical lines. Let's try to account for that."
 ---
 
 # 0: the refresher
@@ -11,8 +12,6 @@ Last time we went through the process of prototyping an approximation of random 
 ![randomly generated Mondrian of some complexity](/images/randrian.2015-03-16T21:39:39.981Z.png)
 
 Now we have an issue to work through, in that a real Mondrian isn't perfectly divided along the vertical lines. Let's try to account for that.  One possibility is to forgo the line drawing, and instead focus exclusively on drawing the rectangles.
-
-<!--more-->
 
 # 1: Reimagining the paint process
 
