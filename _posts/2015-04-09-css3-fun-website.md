@@ -60,13 +60,17 @@ The `transform-origin` property below specifies that the center of the transform
 
 Here, cards are direct children of the marquee.  It's important to note that some browsers (Firefox, mobile browsers) require that the direct parent of the transformed elements has a perspective defined; other browsers (Chrome) allow any ancestor.  I think I spent two days trying to figure out why my cards wouldn't scale commensurate with moving along the Z axis in Firefox; turns out that my `perspective` property was set on the parent of the marquee instead of the marquee itself.
 
+[Note: the following demo contains some Webkit corrections; Safari currently doesn't understand non-prefixed `transform` and `perspective` properties]
+
 <div class="box">
-<div style="left: 47%;
+<div style="left: 20%;
     right: 0px;
     position: relative;
     perspective: 500px;
+    -webkit-perspective: 500px;
     height: 600px;
-    transform: scale3d(0.5, 0.5, 1);">
+    transform: scale3d(0.5, 0.5, 1);
+    -webkit-transform: scale3d(0.5, 0.5, 1);">
   <div style="height: 600px;
     width: 400px;
     left: -200px;
@@ -74,6 +78,7 @@ Here, cards are direct children of the marquee.  It's important to note that som
     position: absolute;
     transform-origin: 50% 50% 0;
     transform: translate3d(0px, 0px, 0px);
+    -webkit-transform: translate3d(0px, 0px, 0px);
     z-index: 20;
     background-color: red;
     opacity: 0.7">
@@ -87,6 +92,7 @@ Here, cards are direct children of the marquee.  It's important to note that som
     position: absolute;
     transform-origin: 50% 50% 0;
     transform: translate3d(100px, 0px, -50px);
+    -webkit-transform: translate3d(100px, 0px, -50px);
     z-index: 19;
     background-color: blue;">
     <p style="color: white; margin-top: 50%;">Behind</p>
@@ -126,12 +132,14 @@ Setting the transform and opacity on the card and card overlay, respectively, cr
 <div class="box">
 <style type="text/css">
   #flipdemo {
-    left: 47%;
+    left: 20%;
     right: 0px;
     position: relative;
     perspective: 500px;
+    -webkit-perspective: 500px;
     height: 600px;
     transform: scale3d(0.5, 0.5, 1);
+    -webkit-transform: scale3d(0.5, 0.5, 1);
   }
   #flipdemo > .card {
     height: 600px;
@@ -146,14 +154,17 @@ Setting the transform and opacity on the card and card overlay, respectively, cr
   }
   #flipdemo > .card:nth-child(1) {
     transform: translate3d(0px, 0px, 0px);
+    -webkit-transform: translate3d(0px, 0px, 0px);
     z-index: 20;
   }
   #flipdemo > .card:nth-child(2) {
     transform: translate3d(100px, 0px, -50px);
+    -webkit-transform: translate3d(100px, 0px, -50px);
     z-index: 19;
   }
   #flipdemo > .card:nth-child(3) {
     transform: translate3d(200px, 0px, -100px);
+    -webkit-transform: translate3d(200px, 0px, -100px);
     z-index: 18;
   }
   #flipdemo > .card > .cardover {
