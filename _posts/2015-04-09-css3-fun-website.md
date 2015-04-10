@@ -127,7 +127,7 @@ Transitions are an animation-lite in CSS, allowing for simple animation using mu
   .card:nth-child(3) .cardover { opacity: 0.8440417392452615;}
 ```
 
-Setting the transform and opacity on the card and card overlay, respectively, creates a move-forward fade-in effect, shown below on a timed transform.  The script here is doing just one thing: re-attaching the first card to the end.  This is why the first/last card doesn't transition out like the others.  To get smoother effects where element restructuring is concerned requires some trickery.  The actual site uses a "holder" container sitting in front of the marquee to grab the first element and fade it out while the others move forward.
+Setting the transform and opacity on the card and card overlay, respectively, creates a move-forward fade-in effect, shown below on a timed transform.  The script here is doing just one thing: re-attaching the first card to the end.  This is why the first/last card doesn't transition out like the others.  To get smoother effects where element restructuring is concerned requires some trickery.  The actual site uses a stub at position 1 and the front-and-center card is position 2.  When paging, the stub is detached, pushing the front card to fade out with a slight move to the left and front, then after a quick timeout, the old card is attached to the back (where there is less need to fade in slickly) and the stub takes its place back at position 1.
 
 <div class="box">
 <style type="text/css">
