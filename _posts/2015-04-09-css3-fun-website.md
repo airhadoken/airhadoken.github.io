@@ -282,6 +282,7 @@ The bad:
 * Flex provides no support for stretching or shrinking text.
 * Flex is new enough to still have little browser based gotchas.
 * Problems with flex are usually solved with [massive capital investment in more flex boxes](https://www.youtube.com/watch?v=nEI19kJ5GfU).
+* Safari/Webkit is dragging tail on properly supporting flex without vendor prefixes.  (This is a pet peeve of mine; vendor prefixes should be dropped as soon as all platforms support a feature, regardless of whether the feature is a standard or not)
 
 ```css
   .card .item {
@@ -328,6 +329,8 @@ It turns out that this is the easiest way of making the bad parts of a flex layo
 
 Also, you'll notice that the header element in each card item is treated specially.  The rest of the flex layout is given an offset to compensate for the header being up top rather than evenly spaced with everything.
 
+[Note: the demo below includes Webkit-prefixed properies, because Safari doesn't support unprefixed flex layout]
+
 <div id="flexdemo" class="box" style="height: 500px">
 <style type="text/css">
 
@@ -344,9 +347,12 @@ Also, you'll notice that the header element in each card item is treated special
     width: 100%;
     height: 90%;
     top: 10%;
+    display: -webkit-flex;
     display: flex;
     justify-content: space-around;
     flex-direction: column;
+    -webkit-justify-content: space-around;
+    -webkit-flex-direction: column;
     font-size: 14pt;
   }
 
@@ -354,12 +360,16 @@ Also, you'll notice that the header element in each card item is treated special
     display: inline-flex;
     flex-flow: inherit;
     justify-content: inherit;
+    -webkit-flex-flow: inherit;
+    -webkit-justify-content: inherit;
     margin-left: 1%;
     margin-right: 1%;
     width: 98%;
     text-align: center;
     flex-grow: 2;
     flex-shrink: 2;
+    -webkit-flex-grow: 2;
+    -webkit-flex-shrink: 2;
     overflow-y: hidden;
   }
 
@@ -382,7 +392,7 @@ Also, you'll notice that the header element in each card item is treated special
 </div>
 </div>
 <div class="card">
-<div class="item" style="flex-direction: row">
+<div class="item" style="flex-direction: row; -webkit-flex-direction: row">
   <header>Flex header (absolute)</header>
   <p> Row layout!</p>
   <p> spacing is even here too </p>
@@ -480,6 +490,8 @@ Note that according to the HTML5 spec, a custom element should always have at le
 
 So we get a nice grid in a flexbox.  Below in the demo, the card (dotted blue border) is a column-oriented flexbox, while the grid elements (dotted red border), are elements in the flex rows making up the 2x2 grid.  Having 49% width enforced ensures that the rows don't wrap to the next line in Mozilla, which is a bit touchier with flexboxes.  The `section` element at (1, 1) preserves its natural sizing differences from the other elements.
 
+[Note: the demo below includes Webkit-prefixed properies, because Safari doesn't support unprefixed flex layout]
+
 <div class="box" id="griddemo">
 <style type="text/css">
   #griddemo .card > .item {
@@ -488,8 +500,10 @@ So we get a nice grid in a flexbox.  Below in the demo, the card (dotted blue bo
   }
 
   #griddemo two-by-two > div {
+    display: -webkit-flex;
     display:flex;
     flex-flow: row;
+    -webkit-flex-flow: row;
     align-items: baseline;
   }
 
@@ -507,9 +521,12 @@ So we get a nice grid in a flexbox.  Below in the demo, the card (dotted blue bo
     border: 1px dotted blue;
     width: 400px;
     height: 400px;
+    display: -webkit-flex;
     display: flex;
     flex-flow: column nowrap;
     justify-content: space-around;
+    -webkit-flex-flow: column nowrap;
+    -webkit-justify-content: space-around;
     margin-left: auto;
     margin-right: auto;
   }
