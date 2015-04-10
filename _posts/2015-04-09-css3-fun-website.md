@@ -367,12 +367,12 @@ Also, you'll notice that the header element in each card item is treated special
   <p> Column layout!</p>
   <p> even spacing </p>
   <p> When text is very long, word wrap wraps correctly, but be careful not to shrink the flex container too much. </p>
-  <header>Flex header (absolute position)</header>
+  <header>Flex header (absolute)</header>
 </div>
 </div>
 <div class="card">
 <div class="item" style="flex-direction: row">
-  <header>Flex header (absolute position)</header>
+  <header>Flex header (absolute)</header>
   <p> Row layout!</p>
   <p> spacing is even here too </p>
   <p> When text is very long, word wrap wraps correctly, but be careful not to shrink the flex container too much. </p>
