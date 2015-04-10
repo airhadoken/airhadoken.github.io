@@ -321,11 +321,11 @@ Also, you'll notice that the header element in each card item is treated special
 <style type="text/css">
 
  #flexdemo .card {
-  width: 350px;
+  width: 40%;
   height: 400px;
   border: 1px dotted blue;
   float: left;
-  margin-left: 35px;
+  margin-left: 5%;
  }
 
  #flexdemo .card .item {
