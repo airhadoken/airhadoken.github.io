@@ -10,7 +10,7 @@ excerpt: "Twitter Lib for Google Apps Script is now at version 16.  If you've cr
 
 Version 12 of this library was motivated by the old method of OAuth authentication being officially dropped from Apps Script.  A long-deprecated version was available until recently, which better supported standalone scripts and a simple, more procedural style of Tweeting.  Versions 13-16 address bugs that arose after version 12 was deployed.  The most recent version is always recommended, and I try to remember to Tweet every major update.
 
-Google Script Engine is built around two major use cases: building rich functionality for spreadsheets, documents, and forms; and creating Web applications using a standalone script that builds pages and handles GET and POST requests.  Twitter Lib is built around a supported but lesser known use case: running scripts at a regular interval in a standalone container.  Setting up these triggers, or even just running functions directly from the script editor, means that the script writer does not have access to a UI element that may pop up a modal window or 
+Google Script Engine is built around two major use cases: building rich functionality for spreadsheets, documents, and forms; and creating Web applications using a standalone script that builds pages and handles GET and POST requests.  Twitter Lib is built around a supported but lesser known use case: running scripts at a regular interval in a standalone container.  Setting up these triggers, or even just running functions directly from the script editor, means that the script writer does not have access to a UI element that may pop up a modal window or otherwise display HTML to a user.
 
 So when authenticating with OAuth, going to an external library is now required.  Google has helpfully prepared this library for public use, but at the same time, it's clunkier than the old style and requires a few extra steps.
 
@@ -211,6 +211,31 @@ Returns a Tweet object matching the search query, or an array of matching Tweets
 
 Searches for Tweets on Twitter.  Logs response to the Logger on failure.
 
+## 4.9 `uploadMedia(blob)`
+
+`blob` is a `Blob` object with the MIME type either set or 
+
+Throws an error if no access token is found in the property store.
+
+returns the Twitter response containing the `media_id` key on success, or null if an error or failure is encountered.
+
+## 4.10 static functions not part of `OAuth` object
+
+### 4.10.1 `encodeString(string)`
+
+`string` is any string
+
+Returns a string.
+
+Does OAuth-compatible percent encoding of the supplied string, which requires a few more characters be escaped than the native JS function `encodeURIComponent()` provides.
+
+### 4.10.2 `grabImage(url, mime_type)`
+
+`url` is a string representing the URL of the image to load into a `Blob` object
+
+`mime_type` is an optional string, representing the MIME type of the image to set in the `Blob`
+
+returns a `Blob` containing the image data.
 
 # 5 Any Questions?
 
