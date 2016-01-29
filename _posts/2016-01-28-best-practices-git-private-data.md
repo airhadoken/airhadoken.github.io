@@ -262,7 +262,9 @@ To git@github.com:airhadoken/neoplastibot.git
    <old commit>..<new commit>  private/master -> master (forced update)
 ```
 
-In this case, we have to do a force-push because the rebase means that the commit tree is no longer just new commits on top of the old ones.  The private-only 
+In this case, we have to do a force-push because the rebase means that the commit tree on your local machine no longer matches the commit tree that the Heroku instance knows about.  The private-only commits are now different commits, and the order's been changed a bit with some commits inserted into the tree.
+
+> I'm perhaps giving out bad advice here, because I'm being quite cavalier about using the `--force` option with Git.  In general you shouldn't be pushing with force to source control, unless you have a really good reason to do so (mostly immediately undoing something stupid you just did).  **In this case** you can use it to deploy to your platform safely, because you are the only one deploying.  But otherwise [listen to other experts](http://willi.am/blog/2014/08/12/the-dark-side-of-the-force-push/) and be very restrictive in when you use it.
 
 Steps 4 to 6 will repeat each time you want to work live on your code.  You'll note that you need to break up the commits where a new variable is introduced, to the variable itself and to its private value.
 
