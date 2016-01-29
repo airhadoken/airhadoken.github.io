@@ -3,7 +3,7 @@ title: "JavaScript String Handling and Emoji"
 author: "Bradley Momberger"
 ---
 
-While working on a minor improvement for [@swagspiration](https://twitter.com/swagsipiration/) today, I found an few interesting facts about both the implementation of strings in JS which allows for emoji, and also a tricky behavior in Chrome (probably a bug).
+While working on a minor improvement for [@swagspiration](https://twitter.com/swagspiration/) today, I found an few interesting facts about both the implementation of strings in JS which allows for emoji, and also a tricky behavior in Chrome (probably a bug).
 
 # About UTF, Emoji, and JavaScript
 
@@ -39,3 +39,7 @@ WHOA!  The whole string seems to have disappeared!
 In fact, it's not disappeared -- all the remaining text is still there, the length property is correct, `charCodeAt()` returns correct values, and removing the tail surrogate from the beginning causes the characters after it to correctly print again. In Chrome, text in a string ceases rendering immediately when a bare tail surrogate is encountered.  This is true of the console, and also of the DOM.  If you set the string above to be the text content of a text node, it would not show anything at all.
 
 I'm unsure if this is a bug, but it is an interesting way of possibly hiding content in plain sight.
+
+# Update 2016-01-28
+
+If you want emoji-safe string functions, I've been informed from [Beau Gunderson](https://twitter.com/beaugunderson) that [Lo-Dash](https://lodash.com/) has emoji-aware string handling.  Also Beau has written an [emoji aware module for Node](https://npm.im/emoji-aware) if you don't need all of Lo-Dash's functionality.
