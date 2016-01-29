@@ -213,11 +213,13 @@ Searches for Tweets on Twitter.  Logs response to the Logger on failure.
 
 ## 4.9 `uploadMedia(blob)`
 
-`blob` is a `Blob` object with the MIME type either set or 
+`blob` is a `Blob` object with the MIME type correctly set, or a `Blob` object containing a JPEG image with the MIME type unset.
 
 Throws an error if no access token is found in the property store.
 
 returns the Twitter response containing the `media_id` key on success, or null if an error or failure is encountered.
+
+Currently only static images are supported for upload to Twitter; no GIFs and MP4 video are not currently supported.
 
 ## 4.10 static functions not part of `OAuth` object
 

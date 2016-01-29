@@ -224,6 +224,9 @@ $ git push --set-upstream heroku private/master:refs/heads/master</pre>
 
 ## 2.1 A Note on Buildpacks
 
+> **UPDATE 2016-01-19:**  Heroku now has native support for multiple buildpacks.  This section is saved for legacy purposes, but be advised that instead of doing all this, it will be possible to do `heroku buildpack:add https://github.com/mojodna/heroku-buildpack-cairo.git` after setting up a new cedar-14 instance.
+For more, see [https://devcenter.heroku.com/changelog-items/653](https://devcenter.heroku.com/changelog-items/653)
+
 To use node-canvas, certain system libraries have to be installed on the host system at a deeper level than node packages go.  Heroku's cedar environment doesn't contain all of the necessary libraries to support the building of the node-canvas module, so we'll have to make some lower level changes to the config.  Heroku uses the concept of "buildpacks" to put together all the needed libraries for execution, and we'll have to make use of this to add the libraries we need as a buildpack.
 
 1. Make sure your Heroku stack is Cedar-14, not Cedar-10.

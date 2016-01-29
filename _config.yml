@@ -23,7 +23,7 @@ defaults:
 markdown: redcarpet
 
 redcarpet:
-  extensions: ["tables"]
+  extensions: ["tables", "footnotes"]
 
 kramdown:
   input: GFM
