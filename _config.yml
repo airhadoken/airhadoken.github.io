@@ -19,8 +19,8 @@ defaults:
     values:
       comments: true
 
-# markdown: kramdown
-markdown: redcarpet
+markdown: kramdown
+#markdown: redcarpet
 
 redcarpet:
   extensions: ["tables", "footnotes"]
