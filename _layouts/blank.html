@@ -19,6 +19,7 @@
   <body>
     <header>
       {% unless site.style.headline %}<h1><a href="{{ site.baseurl }}/">{{ site.title }}</a></h1>{% endunless %}
+      {% if site.subheading %}<div>{{ site.subheading }}</div>{% endif %}
       <nav>
         <ul>
           <li><a href="{{ site.baseurl }}/">Home</a></li>{% for node in site.pages %}{% if node.title %}<li><a href="{{ node.url | prepend: site.baseurl }}"{% if page.url == node.url %} id="selected"{% endif %}>{{ node.title }}</a></li>{% endif %}{% endfor %}
@@ -26,7 +27,6 @@
       </nav>
     </header>
     {% if site.style.headline %}<div><h1><a href="{{ site.baseurl }}/">{{ site.title }}</a></h1></div>{% endif %}
-    {% if site.subheading %}<div>{{ site.subheading }}</div>{% endif %}
 {{ content }}
     <footer>
       <span><a href="{{ site.url }}">{% if page.author %}{{ page.author }}{% else %}{{site.author}}{% endif %}</a></span>
