@@ -15,7 +15,8 @@ defaults:
       layout: "default"
   -
     scope:
-      path: "_posts"
+      path: ""
+      type: "posts"
     values:
       comments: true
 
