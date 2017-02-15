@@ -188,7 +188,7 @@ So now when this is called, `localPartialName` is either a function (from the sc
   return compiled.hydrate(scope, options, nodeList);
 ```
 
-Let's assume that we have some callbacks to hydrate.  If the Stache only had raw text, the hydrator would just return a frag and not set anything up.  Let's see what happens when we have a scope lookup like `&#x28;&#x28;foo}}`, which triggers a callback to `makeLiveBindingBranchRenderer()` in mustache_core.js
+Let's assume that we have some callbacks to hydrate.  If the Stache only had raw text, the hydrator would just return a frag and not set anything up.  Let's see what happens when we have a scope lookup like `{​{foo}}`, which triggers a callback to `makeLiveBindingBranchRenderer()` in mustache_core.js
 
 ```javascript
 	return function branchRenderer(scope, options, parentSectionNodeList, truthyRenderer, falseyRenderer) {
@@ -197,7 +197,7 @@ Let's assume that we have some callbacks to hydrate.  If the Stache only had raw
     nodeLists.register(nodeList, null, parentSectionNodeList || true, state.directlyNested);
 ```
 
-`parentSectionNodeList` contains the node in the parent Stache rendering where the partial was called.  `nodeList = [this]` is now a nodeList containing the node for `&#x28;&#x28;foo}}`.  So you can see that the registration of the lookup expression is a child of the partial.  If the partial were later removed completely from the surrounding template, all of the nodes we're currently constructing would have to be unregistered and moved.  `state.directlyNested` is true here because we want the content of the rendered partial to completely replace any placeholder nodes.
+`parentSectionNodeList` contains the node in the parent Stache rendering where the partial was called.  `nodeList = [this]` is now a nodeList containing the node for `{​{foo}}`.  So you can see that the registration of the lookup expression is a child of the partial.  If the partial were later removed completely from the surrounding template, all of the nodes we're currently constructing would have to be unregistered and moved.  `state.directlyNested` is true here because we want the content of the rendered partial to completely replace any placeholder nodes.
 
 Most of the function is now spent setting up a compute, but then we have to actually set up the rendering.  That is accomplished by using the library functions in [can-view-live](https://github.com/canjs/can-view-live), in this case one to render plain text:
 
