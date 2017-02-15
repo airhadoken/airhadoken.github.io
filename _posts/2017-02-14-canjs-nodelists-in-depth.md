@@ -31,7 +31,7 @@ The other is when there is a supplied parent nodeList, as happens in nodes direc
 
 Here's an example of registering a list as a deep child (not a replacement) of another list:
 
-```text/javascript
+```javascript
 	list1 = [document.createTextNode("")];
 	list2 = [document.createTextNode("a"), document.createTextNode("1")];
 
@@ -71,7 +71,7 @@ Since span1 comes first, it will be the key to recognizing the spans list while 
 
 To demonstrate register a list of nodes that covers the spans and the label, and adds in new texts
 
-		[text1, span1, span2, text2, label2]
+	[text1, span1, span2, text2, label2]
 		
 nestList() will iterate over this list, and when it finds a match, it will replace contiguous nodes
 with the list that contains them.  For efficiency, this always assumes that the subsequence of nodes
@@ -111,9 +111,9 @@ There are two mutually recursive functions that cover this flow, `unregister()` 
 
 Let's go back and look at the nodeMap from the Nesting section above.  If we were to unregister `[span1, span2]`, the nodeMap would look like this:
 
-		label1 => [label1]
-		text1 => [text1, [span1, span2], text2, [labell]]
-		text2 => [text1, [span1, span2], text2, [labell]]
+	label1 => [label1]
+	text1 => [text1, [span1, span2], text2, [labell]]
+	text2 => [text1, [span1, span2], text2, [labell]]
 
 The entries for each member of that nodeList (viz., `span1` and `span2`) are removed from the nodeMap.  That nodelist didn't have any children, so no other nodeLists were unregistered; by contrast, had we removed `text1`'s nodeList, all of the nodeLists would have been removed.  Also of node, the `[span1, span2]` nodeList **is still in the parent list**.  Though the nodelist was unregistered, updating its contents or removing it from parents is a completely separate process.
 
@@ -143,7 +143,7 @@ There are library functions in nodeLists for working with the nodes in a nodeLis
 
 Here's the source of `can.view.live.replace()`:
 
-```text/javascript
+```javascript
 	replace: function (nodes, val, teardown) {
 		// #### replace
 		// Replaces one element with some content while keeping nodeLists data
@@ -166,13 +166,13 @@ This is generally how the flow works when working with the global nodeMap.  Firs
 
 For the second one we'll have to jump around a bit.  This flow starts when we render a partial into a parent Stache.  So we'll call `makeLiveBindingPartialRenderer()` from `can-stache`'s mustache_core.js.  This sets up a new parent nodeList based on the text node that's the placeholder for this partial before the Stache hydrates.
 
-```text/javascript
+```javascript
    var nodeList = [this];
 ```
 
 Farther down this function, a `renderer` callback references this nodelist and hydrates into this nodeList the fragment created by rendering the partial template.
 
-```text/javascript
+```javascript
   renderer = function () {
       if (typeof localPartialName === 'function') {
           return localPartialName(scope, options, nodeList);
@@ -184,13 +184,13 @@ Farther down this function, a `renderer` callback references this nodelist and h
 
 So now when this is called, `localPartialName` is either a function (from the scope), or it's a string (referencing the DOM) and gets resolved to a function.  This function is returned from `stache.compile()` via `HTMLSectionBuilder.prototype.compile()`, is usually called a "renderer," and takes as arguments scope, options, and nodeList.  Scope is the only required argument, but the fact that we're passing in a `nodeList` is key here.  This renderer gets the compiled AST for the Stache template, does a couple cursory checks on scope and options then does this:
 
-```text/javascript
+```javascript
   return compiled.hydrate(scope, options, nodeList);
 ```
 
 Let's assume that we have some callbacks to hydrate.  If the Stache only had raw text, the hydrator would just return a frag and not set anything up.  Let's see what happens when we have a scope lookup like `{{foo}}`, which triggers a callback to `makeLiveBindingBranchRenderer()` in mustache_core.js
 
-```text/javascript
+```javascript
 	return function branchRenderer(scope, options, parentSectionNodeList, truthyRenderer, falseyRenderer) {
     var nodeList = [this];
     nodeList.expression = expressionString;
@@ -201,13 +201,13 @@ Let's assume that we have some callbacks to hydrate.  If the Stache only had raw
 
 Most of the function is now spent setting up a compute, but then we have to actually set up the rendering.  That is accomplished by using the library functions in [can-view-live](https://github.com/canjs/can-view-live), in this case one to render plain text:
 
-```text/javascript
+```javascript
 	live.text(this, computeValue, this.parentNode, nodeList);
 ```
 
 Because we pass a nodeList into `live.text()`, it knows that the nodes should be updated and replaced through operating on the nodeList like this:
 
-```text/javascript
+```javascript
 	var node = el.ownerDocument.createTextNode(live.makeString(compute()));
 	if(nodeList) {
 	  nodeList.unregistered = data.teardownCheck;
