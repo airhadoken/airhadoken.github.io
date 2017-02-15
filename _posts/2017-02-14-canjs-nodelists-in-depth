@@ -1,6 +1,6 @@
 ---
-title: CanJS nodeLists and How They Work
-author: Bradley Momberger
+title: "CanJS nodeLists and How They Work"
+author: "Bradley Momberger"
 ---
 
 This document is a draft of a Markdown reference file for [can-view-nodelist](https://github.com/canjs/can-view-nodelist).  I've been trying to write up a deep understanding of how this library works, because it's vital to the CanJS view layer yet somewhat obscure.  Trying to work on new versions of [can-stache](https://github.com/canjs/can-stache) or even new templating languages necessitates knowing the lower level view libraries inside and out.
