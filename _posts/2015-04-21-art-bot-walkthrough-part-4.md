@@ -231,17 +231,18 @@ To use node-canvas, certain system libraries have to be installed on the host sy
 
 1. Make sure your Heroku stack is Cedar-14, not Cedar-10.
 
-    ```
-    $ heroku stack
-    === neoplastibot Available Stacks
-      cedar-10
-    * cedar-14
-    ```
+```
+$ heroku stack
+=== neoplastibot Available Stacks
+  cedar-10
+* cedar-14
+```
+
 2. Change the buildpack with this command:
 
-    ```bash
-    $ heroku buildpack:set https://github.com/ddollar/heroku-buildpack-multi.git
-    ```
+```bash
+$ heroku buildpack:set https://github.com/ddollar/heroku-buildpack-multi.git
+```
 
 The "multi" buildpack we're setting here isn't a usable buildpack by itself, but it allows for several other buildpacks to be fused together into one.  In the `.buildpacks` file in the app's home directory, we have the following two lines:
 
